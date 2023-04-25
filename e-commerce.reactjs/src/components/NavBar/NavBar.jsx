@@ -1,8 +1,9 @@
 
 import { CartWidget } from "../CartWidget/CarWidget"
 
-export const NavBar = () => {
-    return(
+export const NavBar = (props) => {
+  return (
+    <>
       <ul className="nav">
         <li>
           <h3>Productos</h3>
@@ -15,7 +16,9 @@ export const NavBar = () => {
         </li>
         <CartWidget />
       </ul>
-    )
+      {props.children}
+    </>
+  )
   }
   
  
