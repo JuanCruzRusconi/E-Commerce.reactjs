@@ -24,7 +24,7 @@ export const ItemListContainer = () => {
 
     }, [])
     console.log(productos)
-
+   
     const handleProductFiltered = ({filterState, handleFilterChange}) => (
         <div>
             <h2>Buscar producto</h2>
@@ -36,7 +36,7 @@ export const ItemListContainer = () => {
                     :
                     <>
                         {filterState === '' 
-                            ?   productos.filter.map(producto => <div key={producto.id} className="card w-25">
+                            ?   productos.map(producto => <div key={producto.id} className="card w-25">
                                                      <img src="" alt="" />
                                                      <div className="card-body">
                                                         <h3>{producto.nombre}</h3>
@@ -79,9 +79,9 @@ export const ItemListContainer = () => {
             
             <Titulo titulo="Soy ItemListContainer!" subtitulo="Estos son los productos en stock" />
             
-                <Filter >
+            <Filter >
                 {handleProductFiltered}
-                </Filter>   
+            </Filter>   
            
 
         </section>
