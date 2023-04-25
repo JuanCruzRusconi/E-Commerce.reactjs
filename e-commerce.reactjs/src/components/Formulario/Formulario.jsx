@@ -7,14 +7,14 @@ const handleOnSubmit = (evt) => {
 }
 
 const handleOnChange = (evt) => {
-  setFormData({
+  setFormData ({
     ...formData, 
     [evt.target.name]: evt.target.value
   })
 
 }
 
-export const Formulario = () => {
+export function Formulario (){
 
   const [formData, setFormData] = useState({
     name: '',

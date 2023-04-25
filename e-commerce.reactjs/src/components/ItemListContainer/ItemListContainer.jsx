@@ -2,7 +2,8 @@ import { useEffect, useState } from "react"
 import { Titulo } from "../Titulo/Titulo"
 import { mFetch } from "../../utils/mFetch"
 import Filter from "../Filter/Filter"
-import { Formulario } from "../Formulario/Formulario"
+//
+
 
 export const ItemListContainer = () => {
 
@@ -27,7 +28,6 @@ export const ItemListContainer = () => {
     const handleProductFiltered = ({filterState, handleFilterChange}) => {
         <div>
             <h2>Buscar producto</h2>
-            
             <input type="text" value={filterState} onChange={handleFilterChange} />
         </div>
     }
@@ -35,7 +35,9 @@ export const ItemListContainer = () => {
 
     return(
         <section className="itemListContainer">
-            <Titulo titulo="Soy ItemListContainer!" subtitulo="Tengo adentro a Formulario" />
+            
+
+            <Titulo titulo="Soy ItemListContainer!" subtitulo="Estos son los productos en stock" />
             <div className="containerProductos">
                 {loading ?
                     <h2>Cargando...</h2>
@@ -53,11 +55,11 @@ export const ItemListContainer = () => {
                                               </div>
                                  )
                 }
+                <Filter >
+                {handleProductFiltered}
+                </Filter>
             </div>
-            <Formulario />
-            <Filter >
-               {handleProductFiltered}
-            </Filter>
+            
            
 
         </section>
