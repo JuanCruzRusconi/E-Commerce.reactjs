@@ -18,4 +18,4 @@ export const useCounter = (initial = 0, min, max) => {
   
     return {counter, handleSumar, handleRestar}
   
-  }
+}

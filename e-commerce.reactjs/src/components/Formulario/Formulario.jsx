@@ -30,7 +30,7 @@ export function Formulario (){
       <Titulo titulo={titulo} subtitulo={subtitulo} />
       <form onSubmit={handleOnSubmit}>
         <input type='text' name='name' placeholder='Ingrese su nombre' onChange={handleOnChange} value={formData.name} />
-        <input type='text' name='email' placeholder='Ingrese su localidad' onChange={handleOnChange} value={formData.email} />
+        <input type='text' name='email' placeholder='Ingrese su ciudad' onChange={handleOnChange} value={formData.email} />
         <button>Enviar</button>
       </form>
     </section>

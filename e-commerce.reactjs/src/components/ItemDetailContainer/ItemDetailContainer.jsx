@@ -1,20 +1,19 @@
 import { useEffect, useState } from "react"
 import { ItemDetail } from "../ItemDetail/ItemDetail"
+import { useParams } from "react-router-dom"
 
 export const ItemDetailContainer = () => {
 
-   // [] = useState()
-  //  [] = useEffect()
+    const {pid} = useParams()
+  // [] = useState()
+  // [] = useEffect()
 
     return (
         <div>
-            ItemDetailContainer 
+            <h1>ItemDetailContainer</h1>
             <ItemDetail 
                
-
-            
             />
-
         </div>
     )
 } 

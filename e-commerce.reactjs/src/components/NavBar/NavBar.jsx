@@ -1,34 +1,30 @@
-
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import { CartWidget } from "../CartWidget/CarWidget"
 
 export const NavBar = (props) => {
+  
   return (
-    
-    
+     
     <>
       <ul className="nav">
-        <li>
-          <h3>Productos</h3>
+        <li className="h3">
+          <NavLink to={"/categoria/apple"}>Productos</NavLink>
         </li>
-        <li>
-          <h3>Contacto</h3>
+        <li className="h3">
+          <NavLink to={"/categoria/stanley"}>Stanley</NavLink>
         </li>
-        <li>
-          <h3>Nosotros</h3>
-        </li>
-        <CartWidget />
+        <li className="h3">
+          <NavLink to={"/"}>
+             <CartWidget />
+          </NavLink>
+        </li>       
       </ul>
       {props.children}
-      </>
-      
-      
+    </> 
+
   )
-
-  }
+}
   
- 
-
 /*
 Con Boostrap
 
@@ -37,21 +33,16 @@ Con Boostrap
         <Link to={'/'}>
           E-commerce
         </Link>
-        
-
       </Container>
     </NavBar>
     /*
   <Nav>
-
   ////
-
-          <Nav.Link href="" ></Nav.Link>
-          <Nav.Link></Nav.Link>
-        </Nav>
-        <Nav>
-          <Link>
-
-          </Link> 
-        </Nav>
-        */
+    <Nav.Link href="" ></Nav.Link>
+    <Nav.Link></Nav.Link>
+  </Nav>
+  <Nav>
+    <Link>
+    </Link> 
+  </Nav>
+*/
