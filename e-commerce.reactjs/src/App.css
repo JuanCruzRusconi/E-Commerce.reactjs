@@ -44,7 +44,7 @@
 }
 
 .itemListContainer{
-  height: 500px;
+  height: auto;
   background-color: rgb(110, 110, 110);
 
 }
