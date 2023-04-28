@@ -1,25 +1,24 @@
 import { useState } from "react"
 import { Titulo } from "../Titulo/Titulo"
 
-const handleOnSubmit = (evt) => {
-  evt.preventDefault()
-  console.log("enviado")
-}
-
-const handleOnChange = (evt) => {
-  setFormData ({
-    ...formData, 
-    [evt.target.name]: evt.target.value
-  })
-
-}
-
 export function Formulario (){
 
   const [formData, setFormData] = useState({
     name: '',
     email: ''
   })
+
+  const handleOnSubmit = (evt) => {
+    evt.preventDefault()
+    console.log(`Datos enviados: ${formData.name}, ${formData.email}`)
+  }
+  
+  const handleOnChange = (evt) => {
+    setFormData ({
+      ...formData, 
+      [evt.target.name]: evt.target.value
+    })
+  }
 
   let titulo = "Formulario"
   let subtitulo = "Datos"

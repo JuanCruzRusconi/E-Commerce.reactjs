@@ -10,20 +10,20 @@ import { BrowserRouter, Navigate, Route, Router, Routes } from 'react-router-dom
 function App() {
 
   return (
-   // <div className="App">
+
     <BrowserRouter>
       <Titulo titulo="E-Commerce" subtitulo="React.js" />
       <NavBar />
       <Routes>
-        <Route path='' element={<ItemListContainer />}/>
-        <Route path='/categoria/:cid' element={<ItemListContainer />}/>
-        <Route path='detail/:pid' element={<ItemDetailContainer />}/>  
-        <Route path='form' element={<Formulario />}/>     
-        <Route path='*' element={<Navigate to={'/'} />}/>     
+        <Route path='/' element={<ItemListContainer />} />
+        <Route path='/categoria/:cid' element={<ItemListContainer />} />
+        <Route path='detail/:pid' element={<ItemDetailContainer />} />
+        <Route path='form' element={<Formulario />} />
+        <Route path='*' element={<Navigate to={'/'} />} />
       </Routes>
-      <ItemCount />    
+      <ItemCount />
     </BrowserRouter>
-   // </div>
+
   )
 } 
 

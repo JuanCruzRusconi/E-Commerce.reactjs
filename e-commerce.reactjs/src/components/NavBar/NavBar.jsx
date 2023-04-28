@@ -4,20 +4,26 @@ import { CartWidget } from "../CartWidget/CarWidget"
 export const NavBar = (props) => {
   
   return (
-     
+
     <>
-      <ul className="nav">
-        <li className="h3">
-          <NavLink to={"/categoria/apple"}>Productos</NavLink>
+      <ul className="contenedorNav">
+        <li>
+          <NavLink to={"/"} className={"navBar"}>USAImports</NavLink>
         </li>
-        <li className="h3">
-          <NavLink to={"/categoria/stanley"}>Stanley</NavLink>
+        <li>
+          <NavLink to={"/categoria/"} className={"navBar"}>Productos</NavLink>
         </li>
-        <li className="h3">
+        <li>
+          <NavLink to={"/categoria/apple"} className={"navBar"}>Apple</NavLink>
+        </li>
+        <li>
+          <NavLink to={"/categoria/stanley"} className={"navBar"}>Stanley</NavLink>
+        </li>
+        <li>
           <NavLink to={"/"}>
-             <CartWidget />
+            <CartWidget />
           </NavLink>
-        </li>       
+        </li>
       </ul>
       {props.children}
     </> 
