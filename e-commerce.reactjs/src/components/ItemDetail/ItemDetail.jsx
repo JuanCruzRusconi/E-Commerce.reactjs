@@ -18,6 +18,7 @@ export const ItemDetail = ({producto}) => {
     }
 
     return (
+        
         <>
             <h2>ItemDetail</h2>
             <div>
@@ -41,11 +42,7 @@ export const ItemDetail = ({producto}) => {
                     </Link>
                 </>
             }
-
         </>
+
     )
 }
-
-/*
-            
-            */

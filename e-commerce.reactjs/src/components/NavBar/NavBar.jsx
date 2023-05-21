@@ -1,17 +1,18 @@
 import { NavLink } from "react-router-dom"
 import { CartWidget } from "../CartWidget/CarWidget"
-import { Titulo } from "../Titulo/Titulo"
+import { Title } from "../Title/Title"
 
 export const NavBar = (props) => {
 
   let titulo = "ReactJs-Ecommerce"
   
   return (
+    
     <>
       <ul className="contenedorNav">
         <li>
           <NavLink to={"/"}>
-            <Titulo titulo={titulo} />
+            <Title titulo={titulo} />
           </NavLink>
         </li>
         <li>
@@ -31,5 +32,6 @@ export const NavBar = (props) => {
       </ul>
       {props.children}
     </>
+
   )
 }

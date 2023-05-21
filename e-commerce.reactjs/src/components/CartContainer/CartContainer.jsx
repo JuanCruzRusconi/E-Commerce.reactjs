@@ -14,7 +14,7 @@ export const CartContainer = () => {
         email: ""
     })
 
-    const generarOrden = (evt) => {
+    const generateOrder = (evt) => {
 
         evt.preventDefault()
 
@@ -32,7 +32,7 @@ export const CartContainer = () => {
             .catch(err => console.log(err))
             .finally(() => {
                 setDataForm({})
-                vaciarCarrito()
+                emptyCart()
             })
     }
 
@@ -43,9 +43,6 @@ export const CartContainer = () => {
             [evt.target.name]: evt.target.value
         })
     }
-    console.log(dataForm)
-
-    console.log(cartList)
 
     return (
 
@@ -73,7 +70,7 @@ export const CartContainer = () => {
                         <button>Continuar la compra</button>
                     </Link>
 
-                    <form onSubmit={generarOrden}>
+                    <form onSubmit={generateOrder}>
 
                         <input type="text" name="nombre" onChange={handleOnChange} value={dataForm.nombre} placeholder="Ingrese su nombre" />
                         <input type="text" name="telefono" onChange={handleOnChange} value={dataForm.telefono} placeholder="Ingrese su numero de telefono" />
@@ -88,10 +85,11 @@ export const CartContainer = () => {
                 <div>
                     <h3>No hay productos agregados en el carrito!</h3>
                     <Link to={"/"}>
-                        <button>p</button>
+                        <button>Quiero ver los productos disponibles</button>
                     </Link>
                 </div>
             }
         </div>
+
     )
 }

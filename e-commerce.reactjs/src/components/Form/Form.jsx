@@ -1,7 +1,7 @@
 import { useState } from "react"
-import { Titulo } from "../Titulo/Titulo"
+import { Title } from "../Title/Title"
 
-export function Formulario (){
+export function Form (){
 
   const [formData, setFormData] = useState({
     name: '',
@@ -26,12 +26,13 @@ export function Formulario (){
   return (
     <section className="formulario">
 
-      <Titulo titulo={titulo} subtitulo={subtitulo} />
+      <Title titulo={titulo} subtitulo={subtitulo} />
       <form onSubmit={handleOnSubmit}>
         <input type='text' name='name' placeholder='Ingrese su nombre' onChange={handleOnChange} value={formData.name} />
         <input type='text' name='email' placeholder='Ingrese su ciudad' onChange={handleOnChange} value={formData.email} />
         <button>Enviar</button>
       </form>
     </section>
+
   )
 }

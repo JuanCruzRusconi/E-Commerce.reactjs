@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
-import { Titulo } from "../Titulo/Titulo"
-import Filter from "../Filter/Filter"
+import { Title } from "../Title/Title"
 import { useParams } from "react-router-dom"
 import { collection, getDocs, getFirestore, query, where } from "firebase/firestore"
 import ItemList from "../ItemList/ItemList"
@@ -28,21 +27,17 @@ export const ItemListContainer = () => {
             .finally(() => setLoading(false))
 
     }, [cid])
-
-    console.log(products)
  
     return(
         
         <section className="contenedorItemListContainer">
-            
-            <Titulo titulo="Soy ItemListContainer!" subtitulo="Estos son los productos en stock" />
-              
+            <Title titulo="Soy ItemListContainer!" subtitulo="Estos son los productos en stock" /> 
             {loading ?
                 <Loading />
                 :
                 <ItemList productos={products} />
             }    
-
         </section>
+
     )
 }

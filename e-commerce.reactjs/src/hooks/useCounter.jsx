@@ -4,18 +4,18 @@ export const useCounter = (initial = 0, min, max) => {
   
     const [counter, setCounter] = useState(initial)
   
-    let handleSumar = () => {
+    let handleAdd = () => {
       if(counter < max){
       setCounter(counter + 1)
       }
     }
   
-    let handleRestar = () => {
+    let handleSubtract = () => {
       if(counter > min){
       setCounter(counter - 1)
       }
     }
   
-    return {counter, handleSumar, handleRestar}
+    return {counter, handleAdd, handleSubtract}
   
 }

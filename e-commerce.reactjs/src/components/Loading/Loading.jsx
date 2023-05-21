@@ -2,18 +2,16 @@ import { useEffect } from "react"
 
 export const Loading = () => {
 
-    useEffect(() =>{
+    useEffect(() => {
         console.log("loading")
-        return(() =>{
+        return (() => {
             console.log("terminado")
-        }
-        )
+        })
     })
 
-    return(
+    return (
 
         <h2>Cargando ...</h2>
 
     )
-
 }

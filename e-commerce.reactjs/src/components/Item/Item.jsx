@@ -4,13 +4,12 @@ import { Link } from "react-router-dom"
 const Item = memo ( ({producto}) => {
 
     return(
-        
+
         <div>
             <h3>Item</h3>
             <div key={producto.id} className="contenedorItem">
                                                  <img src="" alt="" />
-                                                 <div className="card-body">
-                                                     
+                                                 <div className="card-body"> 
                                                      <h3>{producto.nombre}</h3>
                                                      <h3>${producto.precio}</h3>
                                                  </div>
@@ -21,6 +20,7 @@ const Item = memo ( ({producto}) => {
                                                  </div>
                                               </div>
         </div>
+        
     )
 })
 

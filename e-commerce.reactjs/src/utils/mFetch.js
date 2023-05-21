@@ -25,6 +25,7 @@ export const mFetch = (id) => {
         setTimeout(() => {
             res(!id ? productos : productos.find(productos => productos.id === id))
         }, 1500)
+        
     })
 }
 */
