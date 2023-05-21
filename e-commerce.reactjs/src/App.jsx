@@ -5,24 +5,44 @@ import { Titulo } from './components/Titulo/Titulo'
 import ItemCount from './components/ItemCount/ItemCount'
 import { Formulario } from './components/Formulario/Formulario'
 import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer'
-import { BrowserRouter, Navigate, Route, Router, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { CartContextProvider } from './contexts/CartContext'
+import { CartContainer } from './components/CartContainer/CartContainer'
 
 function App() {
 
   return (
 
-    <BrowserRouter>
-      <Titulo titulo="E-Commerce" subtitulo="React.js" />
-      <NavBar />
-      <Routes>
-        <Route path='/' element={<ItemListContainer />} />
-        <Route path='/categoria/:cid' element={<ItemListContainer />} />
-        <Route path='detail/:pid' element={<ItemDetailContainer />} />
-        <Route path='form' element={<Formulario />} />
-        <Route path='*' element={<Navigate to={'/'} />} />
-      </Routes>
-      <ItemCount />
-    </BrowserRouter>
+    <CartContextProvider>
+
+      <BrowserRouter>
+
+        <NavBar />
+
+        <Routes>
+          <Route
+            path='/'
+            element={<ItemListContainer />} />
+          <Route
+            path='/categoria/:cid'
+            element={<ItemListContainer />} />
+          <Route
+            path='detail/:pid'
+            element={<ItemDetailContainer />} />
+          <Route
+            path='/cart'
+            element={<CartContainer />} />
+          <Route
+            path='form'
+            element={<Formulario />} />
+          <Route
+            path='*'
+            element={<Navigate to={'/'} />} />
+        </Routes>
+
+      </BrowserRouter>
+
+    </CartContextProvider>
 
   )
 } 

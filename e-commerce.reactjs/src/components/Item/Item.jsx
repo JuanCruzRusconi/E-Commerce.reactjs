@@ -1,13 +1,16 @@
+import { memo } from "react"
 import { Link } from "react-router-dom"
 
-const Item = ({producto}) => {
+const Item = memo ( ({producto}) => {
 
     return(
+        
         <div>
             <h3>Item</h3>
             <div key={producto.id} className="contenedorItem">
                                                  <img src="" alt="" />
                                                  <div className="card-body">
+                                                     
                                                      <h3>{producto.nombre}</h3>
                                                      <h3>${producto.precio}</h3>
                                                  </div>
@@ -19,6 +22,8 @@ const Item = ({producto}) => {
                                               </div>
         </div>
     )
-}
+})
 
 export default Item
+
+//<img src={producto.img} className="containerImagen" alt="imagen" />

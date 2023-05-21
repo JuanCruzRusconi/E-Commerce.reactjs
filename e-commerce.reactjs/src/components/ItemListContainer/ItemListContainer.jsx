@@ -1,115 +1,48 @@
 import { useEffect, useState } from "react"
 import { Titulo } from "../Titulo/Titulo"
-import { mFetch } from "../../utils/mFetch"
 import Filter from "../Filter/Filter"
-import { Link, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
+import { collection, getDocs, getFirestore, query, where } from "firebase/firestore"
 import ItemList from "../ItemList/ItemList"
+import { Loading } from "../Loading/Loading"
 
 export const ItemListContainer = () => {
 
-    const [productos, setProductos] = useState([])
+    const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
     const {cid} = useParams()
 
-    useEffect(() => {
-        if (cid) {
-            mFetch()
-                .then(resultado => {
-                    setProductos(resultado.filter(producto => producto.categoria === cid))
-                })
-                .catch(error => {
-                    console.log(error)
-                })
-                .finally(() => {
-                    setLoading(false)
-                })
+    // Traer todos los productos de Firebase //
 
-        } else { 
-            mFetch()
-                .then(resultado => {
-                    setProductos(resultado)
-                })
-                .catch(error => {
-                    console.log(error)
-                })
-                .finally(() => {
-                    setLoading(false)
-                })
-        }
+    useEffect(() => {
+        
+        const dbFirestore = getFirestore()
+        const queryCollection = collection(dbFirestore, "productos")
+        const queryCollectionFiltered = !cid ? queryCollection : query(
+            queryCollection, where("categoria", "==", cid)
+        )
+
+        getDocs(queryCollectionFiltered)
+            .then(res => setProducts(res.docs.map(producto => ({ id: producto.id, ...producto.data() }))))
+            .catch(err => console.log(err))
+            .finally(() => setLoading(false))
+
     }, [cid])
 
-    console.log(productos)
-   
-   
+    console.log(products)
+ 
     return(
+        
         <section className="contenedorItemListContainer">
             
             <Titulo titulo="Soy ItemListContainer!" subtitulo="Estos son los productos en stock" />
               
             {loading ?
-                <h2>Cargando...</h2>
+                <Loading />
                 :
-                <ItemList productos={productos} />
+                <ItemList productos={products} />
             }    
 
         </section>
     )
 }
-
-// ------- CODIGO ANTERIOR ------- // 
-/*
-const handleProductFiltered = ({filterState, handleFilterChange}) => (
-    <div>
-        <h2>Buscar producto</h2>
-        <input type="text" value={filterState} onChange={handleFilterChange} />
-
-        <div className="containerProductos">
-            {loading ?
-                <h2>Cargando...</h2>
-                :
-                <>
-                    {filterState === '' 
-                        ?   productos.map(producto => <div key={producto.id} className="card w-25">
-                                                 <img src="" alt="" />
-                                                 <div className="card-body">
-                                                     <h3>{producto.nombre}</h3>
-                                                     <h3>{producto.color}</h3>
-                                                     <h3>{producto.precio}</h3>
-                                                 </div>
-                                                 <div>
-                                                     <Link to={`/detail/${producto.id}`}>
-                                                     <button>Ver detalle de producto</button>
-                                                     </Link>
-                                                 </div>
-                                              </div>
-                            )
-                    
-                           
-                        :
-                            productos.filter(producto => producto.nombre.toLowerCase().includes(filterState.toLowerCase())).map(producto => <div key={producto.id} className="card w-25">
-                                                 <img src="" alt="" />
-                                                 <div className="card-body">
-                                                     <h3>{producto.nombre}</h3>
-                                                     <h3>{producto.color}</h3>
-                                                     <h3>{producto.precio}</h3>
-                                                 </div>
-                                                 <div>
-                                                     <Link to={`/detail/${producto.id}`}>
-                                                     <button>Ver detalle de producto</button>
-                                                     </Link>
-                                                 </div>
-                                              </div>
-                            )
-                    }
-                    
-                </>             
-            }
-        </div>
-    </div>        
-) 
-
-    <Filter >
-            {handleProductFiltered}
-    </Filter>   
-            
-*/

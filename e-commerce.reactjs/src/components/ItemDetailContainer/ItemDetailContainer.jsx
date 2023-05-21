@@ -1,34 +1,36 @@
 import { useEffect, useState } from "react"
 import { ItemDetail } from "../ItemDetail/ItemDetail"
 import { useParams } from "react-router-dom"
-import { mFetch } from "../../utils/mFetch"
+import { Loading } from "../Loading/Loading"
+import { doc, getDoc, getFirestore } from "firebase/firestore"
 
 export const ItemDetailContainer = () => {
 
-    const [producto, setProducto] = useState({})
+    const [product, setProduct] = useState({})
     const [isLoading, setIsLoading] = useState(true)
     const { pid } = useParams()
-    // [] = useState()
-    // [] = useEffect()
+    
+    // Trear un producto de Firebase //
     useEffect(() => {
-        mFetch(pid)
-            .then(resp => setProducto(resp))
+
+        const dbFirestore = getFirestore()
+        const queryDoc = doc(dbFirestore, "productos", pid)
+
+        getDoc(queryDoc)
+            .then(res => setProduct({ id: res.id, ...res.data() }))
             .catch(err => console.log(err))
             .finally(() => setIsLoading(false))
-
-    }, [])
+    })
 
     return (
         <div>
             <h1>ItemDetailContainer</h1>
 
             {isLoading ?
-                <h2>Cargando...</h2>
+                <Loading />
                 :
                 <>
-                    <div>
-                        <ItemDetail producto={producto} />
-                    </div>
+                    <ItemDetail producto={product} />
                 </>  
             }
 
