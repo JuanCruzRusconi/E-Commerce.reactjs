@@ -1,10 +1,11 @@
 import { NavLink } from "react-router-dom"
 import { CartWidget } from "../CartWidget/CarWidget"
 import { Title } from "../Title/Title"
+import { Form } from "../Form/Form"
 
 export const NavBar = (props) => {
 
-  let titulo = "ReactJs-Ecommerce"
+  let name = "ReactJs-Ecommerce"
   
   return (
     
@@ -12,7 +13,7 @@ export const NavBar = (props) => {
       <ul className="contenedorNav">
         <li>
           <NavLink to={"/"}>
-            <Title titulo={titulo} />
+            <Title name={name} />
           </NavLink>
         </li>
         <li>
@@ -23,6 +24,9 @@ export const NavBar = (props) => {
         </li>
         <li>
           <NavLink to={"/categoria/Stanley"} className={"navBar"}>Stanley</NavLink>
+        </li>
+        <li>
+          <NavLink to={"/form"} className={"navBar"}>Formulario</NavLink>
         </li>
         <li>
           <NavLink to={"/cart"}>

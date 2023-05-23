@@ -1,7 +1,7 @@
 #root {
   height: 100%;
   width: 100%;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(67, 152, 255);
   text-align: center;
   padding: 0px 0px 50px 0px;
   overflow: hidden;
@@ -45,10 +45,11 @@
   justify-content: space-around;
    
 }
+
 h1.navBar{
   font-size: 25px;
   font-style: italic;
-
+  margin: 15px 0px 0px 0px;
 }
 
 .navBar{
@@ -62,6 +63,12 @@ h1.navBar{
 .navBar:hover{
   color: rgb(67, 152, 255);
   letter-spacing: 1.5px;
+}
+
+.title {
+  font-size: 30px;
+  font-style: normal;
+  color: aliceblue;
 
 }
 
@@ -90,15 +97,23 @@ h1.navBar{
 
 .containerImagen {
   height: 250px;
-  width: 250px;
+  width: 2s50px;
+}
 
+.contenedorCartForm {
+  margin: 150px 0px 0px 0px;
 }
 
 .formulario{
   background-color: rgb(113, 113, 113);
   height: 250px;
   margin: 20px 50px 20px 50px;
+}
 
+.text{
+  font-weight: 700;
+  font-style: italic;
+  font-size: 20px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

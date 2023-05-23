@@ -31,12 +31,15 @@ export const ItemListContainer = () => {
     return(
         
         <section className="contenedorItemListContainer">
-            <Title titulo="Soy ItemListContainer!" subtitulo="Estos son los productos en stock" /> 
+
+            <Title title="Soy ItemListContainer!" text="Estos son los productos en stock" /> 
+            
             {loading ?
                 <Loading />
                 :
                 <ItemList productos={products} />
             }    
+            
         </section>
 
     )

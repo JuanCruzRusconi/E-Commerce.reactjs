@@ -20,18 +20,21 @@ export function Form (){
     })
   }
 
-  let titulo = "Formulario"
-  let subtitulo = "Datos"
+  let title = "Formulario de contacto"
+  let text = "Rellene el formulario de contacto a continuación para que podeamos ponernos en contacto con usted."
 
   return (
-    <section className="formulario">
 
-      <Title titulo={titulo} subtitulo={subtitulo} />
+    <section className="contenedorForm">
+
+      <Title title={title} text={text} />
       <form onSubmit={handleOnSubmit}>
         <input type='text' name='name' placeholder='Ingrese su nombre' onChange={handleOnChange} value={formData.name} />
         <input type='text' name='email' placeholder='Ingrese su ciudad' onChange={handleOnChange} value={formData.email} />
+
         <button>Enviar</button>
       </form>
+
     </section>
 
   )

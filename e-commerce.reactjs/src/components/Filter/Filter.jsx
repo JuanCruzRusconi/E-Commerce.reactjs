@@ -9,7 +9,7 @@ const Filter = ({children}) => {
     }
 
     return children({filterState, handleFilterChange})
-    
+       
 }
 
 export default Filter

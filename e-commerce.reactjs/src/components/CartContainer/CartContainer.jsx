@@ -3,6 +3,10 @@ import { useState } from "react"
 import { useCartContext } from "../../contexts/CartContext"
 import { Link } from "react-router-dom"
 import { addDoc, collection, getFirestore } from "firebase/firestore"
+import { CartForm } from "../CartForm/CartForm"
+import { Cart } from "../Cart/Cart"
+import { KeepBuying } from "../KeepBuying/KeepBuying"
+import { Title } from "../Title/Title"
 
 export const CartContainer = () => {
 
@@ -44,21 +48,18 @@ export const CartContainer = () => {
         })
     }
 
+    let title = "Productos agregados al carrito:"
+    let text = "No hay productos agregados al carrito!"
+
     return (
 
-        <div>
+        <div className="contenedorCartContainer">           
+            
             {cartList.length != 0 ?
                 <>
-                    <h2>Productos agregados al carrito:</h2>
+                    <Title title={title} />
                     {cartList.map(producto => (
-                        <div key={producto.id}>
-                            <h3>{producto.nombre}</h3>
-                            <h3>Cantidad: {producto.cantidad}</h3>
-                            <h3>Precio: ${producto.precio}</h3>
-                            <button onClick={() => deleteProduct(producto.id)}>Eliminar del carrito</button>
-                        </div>
-
-                    ))}
+                        <Cart key={producto.id} producto={producto} deleteProduct={deleteProduct} totalPrice={totalPrice} emptyCart={emptyCart} />))}
 
                     <div>
                         <h3>Precio total:{totalPrice()}</h3>
@@ -66,30 +67,20 @@ export const CartContainer = () => {
                         <button onClick={emptyCart}>Vaciar carrito</button>
                     </div>
 
-                    <Link to={"/"}>
-                        <button>Continuar la compra</button>
-                    </Link>
+                    <KeepBuying />
 
-                    <form onSubmit={generateOrder}>
-
-                        <input type="text" name="nombre" onChange={handleOnChange} value={dataForm.nombre} placeholder="Ingrese su nombre" />
-                        <input type="text" name="telefono" onChange={handleOnChange} value={dataForm.telefono} placeholder="Ingrese su numero de telefono" />
-                        <input type="text" name="email" onChange={handleOnChange} value={dataForm.email} placeholder="Ingrese su email" />
-                        <input type="text" name="nombre" onChange={handleOnChange} value={""} placeholder="Ingrese su nombre" />
-
-                        <button>Generar orden</button>
-
-                    </form>
+                    <CartForm generateOrder={generateOrder} handleOnChange={handleOnChange} dataForm={dataForm} />
                 </>
                 :
                 <div>
-                    <h3>No hay productos agregados en el carrito!</h3>
-                    <Link to={"/"}>
-                        <button>Quiero ver los productos disponibles</button>
-                    </Link>
+                    <Title text={text} />
+                    
+                    <KeepBuying />
                 </div>
             }
+        
         </div>
 
     )
 }
+

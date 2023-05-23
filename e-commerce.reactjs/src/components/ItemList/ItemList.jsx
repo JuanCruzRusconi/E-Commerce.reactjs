@@ -6,13 +6,15 @@ const ItemList = memo(({ productos }) => {
 
     return (
 
-        <div>
+        <div className="contenedorItemList">
+
             <h2>ItemList</h2>
             <div className="contenedorItemList">
                 {productos.map(producto => <Item key={producto.id} producto={producto} />)}
             </div>
+
         </div>
-    
+
     )
 })
 
