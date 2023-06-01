@@ -10,7 +10,7 @@ export const ItemDetailContainer = () => {
     const [isLoading, setIsLoading] = useState(true)
     const { pid } = useParams()
     
-    // Trear un producto de Firebase //
+    
     useEffect(() => {
 
         const dbFirestore = getFirestore()

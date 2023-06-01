@@ -1,10 +1,10 @@
-export const Title = ({ name, title, text }) => {
+export const Title = ({ brand, title, text }) => {
 
     return (
         
         <div>
             
-            <h1 className="navBar">{name}</h1>
+            <h1 className="navBar">{brand}</h1>
 
             <h2 className="title">{title}</h2>
 

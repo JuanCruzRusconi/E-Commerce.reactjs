@@ -3,6 +3,7 @@ import ItemCount from "../ItemCount/ItemCount"
 import { useState } from "react"
 import { useCartContext } from "../../contexts/CartContext"
 import { KeepBuying } from "../KeepBuying/KeepBuying"
+import { Button, Card } from "react-bootstrap"
 
 
 export const ItemDetail = ({producto}) => {
@@ -21,7 +22,44 @@ export const ItemDetail = ({producto}) => {
     return (
 
         <>
-            <div className="contenedorItem">
+            <div className="contenedorItemDetail">
+                
+                <Card style={{ width: '22rem' }}>
+                    <Card.Img variant="top" src="holder.js/100px180" />
+
+                    <Card.Body>
+                        <Card.Title>{producto.nombre}</Card.Title>
+                        <Card.Text>
+                            {producto.categoria} {producto.nombre} disponibles acutalmente en color {producto.color}.
+                        </Card.Text>
+                        <Card.Title>${producto.precio}</Card.Title>
+                        <Card.Text>Stock disponible: {producto.stock}</Card.Text>
+                        <Card.Text>ID: {pid}</Card.Text>
+
+                    </Card.Body>
+                </Card>
+
+            </div>    
+
+            {isAmount ?
+                <ItemCount onAdd={onAdd} />
+                :
+                <>
+                    <div className="contenedorBoton">
+                        <KeepBuying />
+                        <Link to={"/cart"}>
+                            <Button>Finalizar la compra</Button>
+                        </Link>
+                    </div>
+                </>
+            }
+        </>
+
+    )
+}
+
+/*
+ <div className="contenedorItem">
 
                 <div className="item">
                     <h3>Producto: {producto.nombre}</h3>
@@ -31,18 +69,4 @@ export const ItemDetail = ({producto}) => {
                     <h3>Stock disponible: {producto.stock}</h3>
                 </div>
             </div>
-
-            {isAmount ?
-                <ItemCount onAdd={onAdd} />
-                :
-                <>
-                    <KeepBuying />
-                    <Link to={"/cart"}>
-                        <button>Finalizar la compra</button>
-                    </Link>
-                </>
-            }
-        </>
-
-    )
-}
+            */

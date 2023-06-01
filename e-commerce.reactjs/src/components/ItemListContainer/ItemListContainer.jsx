@@ -11,8 +11,7 @@ export const ItemListContainer = () => {
     const [loading, setLoading] = useState(true)
     const {cid} = useParams()
 
-    // Traer todos los productos de Firebase //
-
+    
     useEffect(() => {
         
         const dbFirestore = getFirestore()

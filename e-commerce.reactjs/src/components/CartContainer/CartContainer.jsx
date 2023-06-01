@@ -1,12 +1,12 @@
 
 import { useState } from "react"
 import { useCartContext } from "../../contexts/CartContext"
-import { Link } from "react-router-dom"
 import { addDoc, collection, getFirestore } from "firebase/firestore"
 import { CartForm } from "../CartForm/CartForm"
 import { Cart } from "../Cart/Cart"
 import { KeepBuying } from "../KeepBuying/KeepBuying"
 import { Title } from "../Title/Title"
+import { Button } from "react-bootstrap"
 
 export const CartContainer = () => {
 
@@ -58,16 +58,23 @@ export const CartContainer = () => {
             {cartList.length != 0 ?
                 <>
                     <Title title={title} />
-                    {cartList.map(producto => (
-                        <Cart key={producto.id} producto={producto} deleteProduct={deleteProduct} totalPrice={totalPrice} emptyCart={emptyCart} />))}
+                    <div className="contenedorCartContainer">
+                        {cartList.map(producto => (
+                            <Cart key={producto.id} producto={producto} deleteProduct={deleteProduct} totalPrice={totalPrice} emptyCart={emptyCart} />))}
 
+                    </div> 
                     <div>
-                        <h3>Precio total:{totalPrice()}</h3>
+                        <h3>Precio total: ${totalPrice()}</h3>
 
-                        <button onClick={emptyCart}>Vaciar carrito</button>
                     </div>
 
-                    <KeepBuying />
+                    <div className="contenedorBoton">
+
+                        <KeepBuying />
+
+                        <Button onClick={emptyCart}>Vaciar carrito</Button>
+
+                    </div>
 
                     <CartForm generateOrder={generateOrder} handleOnChange={handleOnChange} dataForm={dataForm} />
                 </>

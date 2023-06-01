@@ -1,3 +1,4 @@
+import { Button } from "react-bootstrap"
 import { useCounter } from "../../hooks/useCounter"
 import { Title } from "../Title/Title"
 
@@ -5,17 +6,19 @@ const ItemCount = ({initial=1, stock=10, onAdd}) => {
 
   const {counter, handleAdd, handleSubtract} = useCounter(initial, 1, stock)
 
-  let title = "Productos agregados al carrito"
+  let title = "Agregar al carrito"
 
     return (
         
         <div className="contenedorCounter">
 
             <Title title={title} />
-            <button onClick={handleAdd}>Añadir producto</button>
-            <button onClick={handleSubtract}>Restar producto</button>
-            <button onClick={()=>{onAdd(counter)}}>Agregar al carrito {counter}</button>
-        
+            <div className="contenedorBoton">
+                <Button onClick={handleAdd}>Añadir producto</Button>
+                <Button onClick={handleSubtract}>Restar producto</Button>
+                <Button onClick={() => { onAdd(counter) }}>Agregar al carrito {counter}</Button>
+            </div>
+
         </div>
 
     )
